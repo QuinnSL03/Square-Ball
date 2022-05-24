@@ -18,4 +18,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void OnValueChanged(float val)
+ {
+     GameController.difficulty = 2 - val;
+ }
 }
