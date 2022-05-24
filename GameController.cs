@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject witch;
+    public static float difficulty;
 
     int count = 0;
 
@@ -23,10 +24,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(difficulty);
         
         count++;
         //Wave 1
-        if(count % 35 == 0 && count < 500)
+        if(count % (int)(35 * difficulty) == 0 && count < 500)
         {
             Debug.Log("Spawned");
             Instantiate(enemy1, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
@@ -35,12 +37,12 @@ public class GameController : MonoBehaviour
         //Wave 2
         if(count > 500 && count < 1000)
         {
-            if(count % 70 == 0)
+            if(count % (int)(70 * difficulty) == 0)
             {
                 Debug.Log("Spawned 2");
                 Instantiate(enemy2, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
             }
-            if(count % 75 == 30)
+            if(count % (int)(75 * difficulty) == 30)
             {
                 Instantiate(enemy1, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
             }
@@ -50,15 +52,15 @@ public class GameController : MonoBehaviour
         //Wave 3
         if(count > 1000 && count < 2000)
         {
-            if(count % 200 == 0)
+            if(count % (int)(200 * difficulty) == 0)
             {
                 Instantiate(enemy2, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
             }
-            if(count % 100 == 50)
+            if(count % (int)(100 * difficulty) == 50)
             {
                 Instantiate(enemy1, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
             }
-            if(count % 200 == 150)
+            if(count % (int)(200 * difficulty) == 150)
             {
                 Instantiate(enemy3, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
             }
@@ -66,28 +68,28 @@ public class GameController : MonoBehaviour
         }
 
         //Wave 4
-        if(count > 2000 && count < 3500)
+        if(count > 2000 && count < 5500)
         {
-            if(count % 300 == 0)
+            if(count % (int)(300 * difficulty) == 0)
             {
                 Instantiate(enemy1, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
             }
-            if(count % 300 == 0)
+            if(count % (int)(300 * difficulty) == 0)
             {
                 Instantiate(enemy2, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
             }
-            if(count % 300 == 225)
+            if(count % (int)(300 * difficulty) == 225)
             {
                 Instantiate(enemy3, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
             }
-            if(count % 300 == 0)
+            if(count % (int)(300 * difficulty) == 0)
             {
                 Instantiate(witch, new Vector3(this.transform.position.x + GetModifier(), 0.5f,  this.transform.position.z + GetModifier()), Quaternion.identity);
             }
             
         }
 
-        if(count > 3500)
+        if(count > 5700)
         {
             SceneManager.LoadScene("WinScreen");
         }
